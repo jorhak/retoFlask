@@ -1,0 +1,4 @@
+Flask==2.3.3
+Flask-Testing==0.8.1
+Flask-OAuthlib==0.9.5
+pytest==7.4.2
