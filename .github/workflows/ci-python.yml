@@ -24,7 +24,7 @@ jobs:
     - run: pytest
 
     - name: Fetch Postman Collection
-      uses: stcalica/postman-publish-action@master
+      uses: stcalica/postman-publish-action@v1
       with:
         postman_api_key: ${{ secrets.POSTMAN_KEY }}
         collection_id: ${{ vars.COLLECTION_ID }}
