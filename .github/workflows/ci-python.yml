@@ -26,5 +26,6 @@ jobs:
     - name: Sincronizar con Postman
       uses: jneate/postman-collection-action@v1
       with:
-        postman_api_key: ${{ secrets.POSTMAN_KEY }}
-        collection_id: ${{ vars.COLLECTION_ID }}
+        postmanApiKey: ${{ secrets.POSTMAN_KEY }}
+        postmanWorkspaceId: ${{ vars.COLLECTION_ID }}
+        postmanTimeout: 30000
