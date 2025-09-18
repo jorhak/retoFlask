@@ -23,8 +23,8 @@ jobs:
     - run: pip install -r requirements.txt
     - run: pytest
 
-    - name: Fetch Postman Collection
-      uses: stcalica/postman-publish-action@v1
+    - name: Sincronizar con Postman
+      uses: jneate/postman-collection-action@v1
       with:
         postman_api_key: ${{ secrets.POSTMAN_KEY }}
         collection_id: ${{ vars.COLLECTION_ID }}
