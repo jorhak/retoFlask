@@ -51,7 +51,13 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{TOKEN}}",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "",
@@ -62,22 +68,24 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/deudas?ci#123455",
+					"raw": "http://10.89.168.143:3366/deudas?codigo=ci@12345",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"10",
+						"89",
+						"168",
+						"143"
 					],
-					"port": "5000",
+					"port": "3366",
 					"path": [
 						"deudas"
 					],
 					"query": [
 						{
-							"key": "ci",
-							"value": null
+							"key": "codigo",
+							"value": "ci@12345"
 						}
-					],
-					"hash": "123455"
+					]
 				}
 			},
 			"response": []

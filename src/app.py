@@ -1,9 +1,11 @@
 from flask import Flask, request, jsonify
 from datetime import datetime, timedelta
 import uuid
+from flask_cors import CORS
 
 # Inicialización de la aplicación
 app = Flask(__name__)
+CORS(app)  # Habilitar CORS para todos los dominios
 
 # Simulación de una base de datos en memoria
 usuarios = {}
@@ -12,7 +14,7 @@ deudas_data = {
     '12345': [{"monto": 100, "mes": "Mayo"}, {"monto": 150, "mes": "Junio"}],
     '1425': [{"monto": 250, "mes": "Julio"}]
 }
-saldo_data = {'12345': 20, '1425': 500}
+saldo_data = {'12345': 500, '1425': 500}
 
 # Decorador para la autenticación OAuth
 def require_oauth_token(f):
@@ -178,4 +180,4 @@ def cancelar_pago(pago_id):
     return jsonify({"mensaje": "Pago cancelado exitosamente."}), 200
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
