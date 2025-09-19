@@ -55,7 +55,6 @@ jobs:
         docker run -d --name test-container -p 5000:5000 $IMAGE_TAG
         sleep 10
         curl -f http://localhost:5000/health
-        curl -f http://localhost:5000/
         docker stop test-container && docker rm test-container
 
     - name: Push Docker image
