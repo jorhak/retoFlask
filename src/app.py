@@ -179,5 +179,13 @@ def cancelar_pago(pago_id):
     
     return jsonify({"mensaje": "Pago cancelado exitosamente."}), 200
 
+# Endpoint para verificar el estado del servicio
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({
+        "status": "ok",
+        "fecha": datetime.now()
+    }), 200
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
