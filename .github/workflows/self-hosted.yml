@@ -61,6 +61,6 @@ jobs:
             curl -I http://10.224.125.251:3000/health
             docker stop flask
             docker rm flask
-            docker rmi retoFlask:v2.0.0
+            docker rmi reto-flask:v2.0.0
 
   
