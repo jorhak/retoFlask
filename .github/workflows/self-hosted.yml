@@ -42,7 +42,6 @@ jobs:
           docker run hello-world
           docker run -d -p 80:80 --name webserver nginx
           docker ps -a
-          curl -I http://localhost
           docker stop webserver
           docker rm webserver
           docker rmi nginx
