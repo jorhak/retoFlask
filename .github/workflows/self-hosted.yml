@@ -1,0 +1,67 @@
+name: Runner local
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main, develop]
+
+env:
+  HOLA: "DevOps 90 dias"
+
+jobs:
+    probar-runner-local:
+      runs-on: self-hosted
+
+      steps:
+      - name: Verificar el entorno
+        run: |
+          echo "El valor de la variable HOLA es: $HOLA"
+          uname -a
+          lscpu
+          df -h
+          free -h
+          python3 --version
+          pip3 --version
+          which python3
+          which pip3
+          echo "Directorio actual:"
+          pwd
+          echo "Contenido del directorio:"
+          ls -la
+    
+    comandos-docker:
+      runs-on: self-hosted
+
+      steps:
+      - name: Verificar Docker
+        run: |
+          docker --version
+          docker ps -a
+          docker images
+          docker run hello-world
+          docker run -d -p 80:80 --name webserver nginx
+          docker ps -a
+          curl -I http://localhost
+          docker stop webserver
+          docker rm webserver
+          docker rmi nginx
+    
+    crear-imagen:
+      runs-on: self-hosted
+      steps:
+        - uses: actions/checkout@v4
+        - name: Construir imagen Docker
+          run: |
+            docker build -t retoFlask:v2.0.0 .
+            docker images | grep retoFlask:v2.0.0
+        - name: Ejecutar contenedor desde imagen personalizada
+          run: |
+            docker run -d -p 3000:5000 --name flask retoFlask:v2.0.0
+            docker ps -a | grep flask
+            curl -I http://localhost:3000/health
+            docker stop flask
+            docker rm flask
+            docker rmi retoFlask:v2.0.0
+
+  
