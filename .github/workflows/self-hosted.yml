@@ -58,7 +58,7 @@ jobs:
           run: |
             docker run -d -p 3000:5000 --name flask reto-flask:v2.0.0
             docker ps -a | grep flask
-            curl -I http://localhost:3000/health
+            curl -I http://10.224.125.251:3000/health
             docker stop flask
             docker rm flask
             docker rmi retoFlask:v2.0.0
