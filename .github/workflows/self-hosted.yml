@@ -41,6 +41,10 @@ jobs:
           docker images
           docker run hello-world
           docker run -d -p 80:80 --name webserver nginx
+      - name: Esperar a que el servidor web inicie
+        run: | 
+          sleep 5
+          curl -I http://localhost
           docker ps -a
           docker stop webserver
           docker rm webserver
